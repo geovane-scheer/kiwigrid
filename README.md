@@ -1,5 +1,5 @@
 
-##### Operações Disponíveis
+### Operações Disponíveis
 
 **VENDEDORES**\
 -Cadastrar:\
@@ -11,3 +11,5 @@
 -Buscar pela matrícula:\
 ![image](https://user-images.githubusercontent.com/30416274/112385709-b0a9c600-8cce-11eb-86b9-9a815ce047f1.png)
 -Deletar:\
+![image](https://user-images.githubusercontent.com/30416274/112385837-da62ed00-8cce-11eb-92fd-d1803bc4d34f.png)
+
