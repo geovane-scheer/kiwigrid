@@ -30,4 +30,9 @@ public class ProdutoVendaServiceImpl implements ProdutoVendaService{
 		return produtoVendaRepository.findAll();
 	}
 
+	@Override
+	public Long countByProduto(Produto produto) {
+		return produtoVendaRepository.countByProduto(produto);
+	}
+
 }

@@ -11,5 +11,7 @@ public interface ProdutoVendaService {
 	void save(Venda venda, List<Produto> produtos);
 	
 	Iterable<ProdutoVenda> findAll();
+
+	Long countByProduto(Produto produto);
 	
 }

@@ -20,6 +20,4 @@ public interface VendedorService {
 
 	void delete(Vendedor vendedorDelete);
 
-	Iterable<Vendedor> findAllOrderByMaiorNumeroDeVendas();
-	
 }

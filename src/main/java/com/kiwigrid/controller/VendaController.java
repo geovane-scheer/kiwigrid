@@ -1,12 +1,14 @@
 package com.kiwigrid.controller;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 import javax.inject.Inject;
 import javax.validation.Valid;
 
 import com.kiwigrid.model.Produto;
+import com.kiwigrid.model.ProdutoQuantidadeVendasDTO;
 import com.kiwigrid.model.Venda;
 import com.kiwigrid.model.VendaDTO;
 import com.kiwigrid.model.Vendedor;
@@ -93,5 +95,26 @@ public class VendaController {
     public HttpResponse<?> getProdutosVenda() {
         return HttpResponse.status(HttpStatus.OK).body(this.produtoVendaService.findAll());
     }
+	
+	@Get("/produtosMaisVendidos")
+	public HttpResponse<?> getProdutosMaisVendidos() {
+		List<ProdutoQuantidadeVendasDTO> retorno = new ArrayList<ProdutoQuantidadeVendasDTO>();
+		List<Produto> produtos = (List<Produto>) this.produtoService.findAll();
+
+		if (!produtos.isEmpty()) {
+			for (Produto produto : produtos) {
+				Long quantidadeDeVendas = this.produtoVendaService.countByProduto(produto);
+				ProdutoQuantidadeVendasDTO dto = new ProdutoQuantidadeVendasDTO();
+				dto.setQuantidadeDeVendas(quantidadeDeVendas);
+				dto.setProduto(produto);
+				retorno.add(dto);
+			}
+		} else {
+			return HttpResponse.status(HttpStatus.NOT_FOUND).body("Nenhum produto foi encontrado!");
+		}
+
+		retorno.sort(Comparator.comparing(ProdutoQuantidadeVendasDTO::getQuantidadeDeVendas).reversed());
+		return HttpResponse.status(HttpStatus.OK).body(retorno);
+	}
 	
 }

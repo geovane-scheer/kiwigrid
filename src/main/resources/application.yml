@@ -20,3 +20,7 @@ jpa:
 micronaut:
   server:
     context-path: /kiwigrid
+
+
+
+
