@@ -12,6 +12,8 @@
 ![image](https://user-images.githubusercontent.com/30416274/112385709-b0a9c600-8cce-11eb-86b9-9a815ce047f1.png)
 -Deletar:\
 ![image](https://user-images.githubusercontent.com/30416274/112385837-da62ed00-8cce-11eb-92fd-d1803bc4d34f.png)
+\
+\
 **PRODUTOS**\
 -Cadastrar:\
 ![image](https://user-images.githubusercontent.com/30416274/112386021-18601100-8ccf-11eb-9bc6-7be0e0d70470.png)
