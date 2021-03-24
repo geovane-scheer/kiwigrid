@@ -1,4 +1,9 @@
-
+### Sistema de Score de Vendas - API REST/
+**Como rodar a API**/
+Após fazer o download:/
+-Gerar o .jar da api com o maven install/
+-Rodar a classe Main (MicronautBasicApplication.java) - Run as java application/
+/
 ### Operações Disponíveis
 
 **VENDEDORES**\
