@@ -25,7 +25,7 @@ public class Venda {
 	@NotEmpty(message = "can not be empty")
     private Double valorTotal;
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "vendedor_id", nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
     private Vendedor vendedor;
@@ -34,6 +34,9 @@ public class Venda {
         this.valorTotal = valorTotal;
         this.vendedor = vendedor;
     }
+	
+	public Venda() {}
+
 
 	public Long getId() {
 		return id;
