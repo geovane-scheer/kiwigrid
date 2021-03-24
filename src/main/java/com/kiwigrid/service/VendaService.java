@@ -12,4 +12,8 @@ public interface VendaService {
 
 	Iterable<Venda> findAll();
 
+	Long countByVendedor(Vendedor vendedor);
+
+	Double findValorVendidoByVendedor(Vendedor vendedor);
+
 }

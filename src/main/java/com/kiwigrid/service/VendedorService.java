@@ -19,5 +19,7 @@ public interface VendedorService {
 	Optional<Vendedor> findById(Long id);
 
 	void delete(Vendedor vendedorDelete);
+
+	Iterable<Vendedor> findAllOrderByMaiorNumeroDeVendas();
 	
 }

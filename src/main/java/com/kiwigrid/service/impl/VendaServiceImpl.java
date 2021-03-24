@@ -27,4 +27,14 @@ public class VendaServiceImpl implements VendaService{
 		return vendaRepository.findAll();
 	}
 
+	@Override
+	public Long countByVendedor(Vendedor vendedor) {
+		return vendaRepository.countByVendedor(vendedor);
+	}
+
+	@Override
+	public Double findValorVendidoByVendedor(Vendedor vendedor) {
+		return vendaRepository.findValorVendidoByVendedor(vendedor.getId());
+	}
+
 }

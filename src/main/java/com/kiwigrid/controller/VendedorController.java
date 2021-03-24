@@ -1,9 +1,16 @@
 package com.kiwigrid.controller;
 
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
+
 import javax.inject.Inject;
 import javax.validation.Valid;
 
 import com.kiwigrid.model.Vendedor;
+import com.kiwigrid.model.VendedorNumeroDeVendasDTO;
+import com.kiwigrid.model.VendedorValorVendidoDTO;
+import com.kiwigrid.service.VendaService;
 import com.kiwigrid.service.VendedorService;
 
 import io.micronaut.http.HttpResponse;
@@ -23,6 +30,9 @@ public class VendedorController {
 
     @Inject
     private VendedorService vendedorService;
+    
+    @Inject
+    private VendaService vendaService;
 
     @Get()
     public HttpResponse<?> getVendedores() {
@@ -63,5 +73,50 @@ public class VendedorController {
     		return HttpResponse.status(HttpStatus.NOT_FOUND).body("Vendedor com o ID: " + id + " não encontrado!");
     	}
     }
+    
+	@Get("/porMaiorNumeroDeVendas")
+    public HttpResponse<?> getVendedoresPorMaiorNumeroDeVendas() {
+		List<VendedorNumeroDeVendasDTO> retorno = new ArrayList<VendedorNumeroDeVendasDTO>();
+		List<Vendedor> vendedores = (List<Vendedor>) vendedorService.findAll();
+		
+		if(!vendedores.isEmpty()) {
+			for(Vendedor vendedor : vendedores) {
+				Long numeroDeVendas = vendaService.countByVendedor(vendedor);
+				VendedorNumeroDeVendasDTO dto = new VendedorNumeroDeVendasDTO();
+				dto.setNumeroDeVendas(numeroDeVendas);
+				dto.setVendedor(vendedor);
+				retorno.add(dto);
+			}
+		}else {
+			return HttpResponse.status(HttpStatus.NOT_FOUND).body("Nenhum vendedor foi encontrado!");
+		}
+		
+		retorno.sort(Comparator.comparing(VendedorNumeroDeVendasDTO::getNumeroDeVendas).reversed());
+		return HttpResponse.status(HttpStatus.OK).body(retorno);
+    }
+	
+	
+	@Get("/porMaiorValorVendido")
+    public HttpResponse<?> getVendedoresPorMaiorValorVendido() {
+		List<VendedorValorVendidoDTO> retorno = new ArrayList<VendedorValorVendidoDTO>();
+		
+		List<Vendedor> vendedores = (List<Vendedor>) vendedorService.findAll();
+		
+		if(!vendedores.isEmpty()) {
+			for(Vendedor vendedor : vendedores) {
+				Double valorVendido = vendaService.findValorVendidoByVendedor(vendedor);
+				VendedorValorVendidoDTO dto = new VendedorValorVendidoDTO();
+				dto.setValorVendido(valorVendido);
+				dto.setVendedor(vendedor);
+				retorno.add(dto);
+			}
+		}else {
+			return HttpResponse.status(HttpStatus.NOT_FOUND).body("Nenhum vendedor foi encontrado!");
+		}
+		
+		retorno.sort(Comparator.comparing(VendedorValorVendidoDTO::getValorVendido).reversed());
+		return HttpResponse.status(HttpStatus.OK).body(retorno);
+	}
+	
     
 }

@@ -93,5 +93,5 @@ public class VendaController {
     public HttpResponse<?> getProdutosVenda() {
         return HttpResponse.status(HttpStatus.OK).body(this.produtoVendaService.findAll());
     }
-
+	
 }

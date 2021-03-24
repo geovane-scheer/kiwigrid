@@ -21,12 +21,12 @@ public class ProdutoVenda {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 	
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "venda_id", nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
     private Venda venda;
 	
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "produto_id", nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
     private Produto produto;
@@ -35,6 +35,8 @@ public class ProdutoVenda {
         this.venda = venda;
         this.produto = produto;
     }
+	
+	public ProdutoVenda() {}
 
 	public Long getId() {
 		return id;

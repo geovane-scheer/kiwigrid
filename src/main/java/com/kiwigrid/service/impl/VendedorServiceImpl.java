@@ -46,4 +46,10 @@ public class VendedorServiceImpl implements VendedorService{
 		vendedorRepository.delete(vendedorDelete);
 	}
 
+	@Override
+	public Iterable<Vendedor> findAllOrderByMaiorNumeroDeVendas() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }
