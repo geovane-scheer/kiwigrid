@@ -1,13 +1,9 @@
 package com.kiwigrid.controller;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.inject.Inject;
 import javax.validation.Valid;
 
 import com.kiwigrid.model.Produto;
-import com.kiwigrid.model.ProdutoQuantidadeVendasDTO;
 import com.kiwigrid.service.ProdutoService;
 
 import io.micronaut.http.HttpResponse;
@@ -27,7 +23,7 @@ public class ProdutoController {
 
     @Inject
     private ProdutoService produtoService;
-
+    
     @Get()
     public HttpResponse<?> getProdutos() {
         return HttpResponse.status(HttpStatus.OK).body(this.produtoService.findAll());
@@ -54,7 +50,7 @@ public class ProdutoController {
     
     @Delete("/{id}")
     public HttpResponse<?> deleteProduto(Long id) {
-    	Produto produtoDelete = produtoService.findById(id).get();
+    	Produto produtoDelete = this.produtoService.findById(id).get();
     	if(produtoDelete != null) {
     		this.produtoService.delete(produtoDelete);
     		return HttpResponse.status(HttpStatus.OK).body(produtoDelete);
@@ -63,19 +59,4 @@ public class ProdutoController {
     	}
     }
     
-    @Get("/maisVendidos")
-    public HttpResponse<?> getProdutosMaisVendidos() {
-        List<ProdutoQuantidadeVendasDTO> retorno = new ArrayList<ProdutoQuantidadeVendasDTO>();
-        List<Produto> produtos = (List<Produto>) produtoService.findAll();
-        
-        if(!produtos.isEmpty()) {
-        	for(Produto produto : produtos) {
-        		
-        	}
-        }else {
-        	return HttpResponse.status(HttpStatus.NOT_FOUND).body("Nenhum produto foi encontrado!");
-        }
-        
-        return HttpResponse.status(HttpStatus.OK).body(retorno);
-    }
 }
