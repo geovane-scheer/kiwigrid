@@ -31,12 +31,13 @@ Após fazer o download:\
 ![image](https://user-images.githubusercontent.com/30416274/112386099-375ea300-8ccf-11eb-89df-95409a2200d9.png)
 -Deletar:\
 ![image](https://user-images.githubusercontent.com/30416274/112386126-42b1ce80-8ccf-11eb-9f48-5b63ffe0829d.png)
--Lista de itens mais vendidos:\
-![image](https://user-images.githubusercontent.com/30416274/112394088-e18ff800-8cda-11eb-8148-3fa0b9e37cfd.png)
+
 
 \
 \
 **VENDAS**\
 -Cadastrar:\
 ![image](https://user-images.githubusercontent.com/30416274/112386581-e602e380-8ccf-11eb-8eb4-9817dd4e584d.png)
+-Lista de itens mais vendidos:\
+![image](https://user-images.githubusercontent.com/30416274/112394088-e18ff800-8cda-11eb-8148-3fa0b9e37cfd.png)
 
